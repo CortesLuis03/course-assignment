@@ -155,7 +155,7 @@ export default {
           this.register.credits = 0;
           this.disabledStudent = true;
           this.buttonText = 'Finish';
-          if (this.totalCredits > 7) {
+          if (this.totalCredits >= 7) {
             this.disabledDiscard = false;
           } else {
             this.disabledDiscard = true;
