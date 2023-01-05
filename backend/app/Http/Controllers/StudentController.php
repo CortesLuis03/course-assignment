@@ -51,6 +51,6 @@ class StudentController extends Controller
     {
         $student = Student::find($id);
         $student->delete();
-        return response()->json(' deleted!');
+        return response()->json('Student deleted!');
     }
 }

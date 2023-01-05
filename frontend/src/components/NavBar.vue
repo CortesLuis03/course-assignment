@@ -22,6 +22,12 @@
           <li class="nav-item">
             <router-link class="nav-link" to="/students" data-bs-dismiss="offcanvas">Students</router-link>
           </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/teachers" data-bs-dismiss="offcanvas">Teachers</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/courses" data-bs-dismiss="offcanvas">Courses</router-link>
+          </li>
           <li>
             <hr class="dropdown-divider">
           </li>

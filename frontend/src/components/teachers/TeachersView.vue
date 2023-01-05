@@ -1,8 +1,8 @@
 <template>
   <div class="card">
     <div class="card-header">
-      <h2>Students List</h2>
-      <router-link class="btn btn-primary btn-sm" to="/student/create">New Student</router-link>
+      <h2>Teachers List</h2>
+      <router-link class="btn btn-primary btn-sm" to="/teacher/create">New Teacher</router-link>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -17,25 +17,23 @@
               <th scope="col">Email</th>
               <th scope="col">Address</th>
               <th scope="col">City</th>
-              <th scope="col">Semester</th>
               <th scope="col">Actions</th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="student in results">
-              <td align="center">{{ student.id }}</td>
-              <td align="center">{{ student.std_dni }}</td>
-              <td>{{ student.std_name }}</td>
-              <td>{{ student.std_lastname }}</td>
-              <td align="center">{{ student.std_phone }}</td>
-              <td>{{ student.std_email }}</td>
-              <td>{{ student.std_address }}</td>
-              <td align="center">{{ student.std_city }}</td>
-              <td align="center">{{ student.std_semester }}</td>
+            <tr v-for="teacher in results">
+              <td align="center">{{ teacher.id }}</td>
+              <td align="center">{{ teacher.tch_dni }}</td>
+              <td>{{ teacher.tch_name }}</td>
+              <td>{{ teacher.tch_lastname }}</td>
+              <td align="center">{{ teacher.tch_phone }}</td>
+              <td>{{ teacher.tch_email }}</td>
+              <td>{{ teacher.tch_address }}</td>
+              <td align="center">{{ teacher.tch_city }}</td>
               <td align="center">
                 <div class="btn-group btn-group-sm" role="group">
-                  <router-link type="button" class="btn btn-warning" :to="{path:`/student/edit/${student.id}`}">Editar</router-link>
-                  <router-link type="button" class="btn btn-danger" to="/student/create">Eliminar</router-link>
+                  <router-link type="button" class="btn btn-warning" :to="{path:`/teacher/edit/${teacher.id}`}">Editar</router-link>
+                  <router-link type="button" class="btn btn-danger" to="/teacher/create">Eliminar</router-link>
                 </div>
               </td>
             </tr>
@@ -49,7 +47,7 @@
 <script>
 import axios from 'axios';
 export default {
-  name: 'StudentsView',
+  name: 'TeachersView',
   data() {
     return {
       results: {
@@ -58,11 +56,11 @@ export default {
     }
   },
   created() {
-    this.StudentsList();
+    this.teachersList();
   },
   methods: {
-    StudentsList() {
-      var url = 'http://localhost:8000/api/student/list';
+    teachersList() {
+      var url = 'http://localhost:8000/api/teacher/list';
       axios.get(url).then(
         ({ data }) => {
           console.log(data);
