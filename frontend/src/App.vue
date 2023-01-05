@@ -69,4 +69,8 @@ body {
   border: 2px #dc3545 solid;
   min-width: 70px;
 }
+
+table{
+  font-size: 10pt;
+}
 </style>

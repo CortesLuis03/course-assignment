@@ -42,6 +42,15 @@ Route::prefix('course')->group(function() {
     Route::delete('/delete/{id}',[App\Http\Controllers\CourseController::class, 'destroy']);
 });
 
+Route::prefix('relationship')->group(function() {
+    Route::get('/list',[App\Http\Controllers\StudentTeacherController::class, 'index']);
+    Route::get('/info',[App\Http\Controllers\StudentTeacherController::class, 'getInfo']);
+    Route::get('/infoStudent/{id}',[App\Http\Controllers\StudentTeacherController::class, 'getInfoStudent']);
+    Route::post('/save',[App\Http\Controllers\StudentTeacherController::class, 'store']);
+    Route::delete('/delete/{id}',[App\Http\Controllers\StudentTeacherController::class, 'destroy']);
+    Route::delete('/deleteAll/{id}',[App\Http\Controllers\StudentTeacherController::class, 'destroyAll']);
+});
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

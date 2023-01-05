@@ -33,7 +33,7 @@
               <td align="center">
                 <div class="btn-group btn-group-sm" role="group">
                   <router-link type="button" class="btn btn-warning" :to="{path:`/teacher/edit/${teacher.id}`}">Editar</router-link>
-                  <router-link type="button" class="btn btn-danger" to="/teacher/create">Eliminar</router-link>
+                  <button type="button" class="btn btn-danger" @click="remove(teacher.id)">Eliminar</button>
                 </div>
               </td>
             </tr>
@@ -67,6 +67,12 @@ export default {
           this.results = data;
         }
       )
+    },
+    remove(id) {
+      const url = `http://localhost:8000/api/teacher/delete/${id}`;
+      axios.delete(url).then(() => {
+        this.teachersList();
+      });
     }
   }
   // props: {},

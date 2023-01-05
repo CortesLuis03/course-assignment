@@ -22,14 +22,15 @@
             <tr v-for="course in results">
               <td align="center">{{ course.id }}</td>
               <td>{{ course.crs_name }}</td>
-              <td>{{ course.crs_description }}</td>
+              <td><label class="description">{{ course.crs_description }}</label></td>
               <td>{{ course.crs_credits }}</td>
               <td>{{ course.crs_area }}</td>
               <td class="first-letter-uppercase">{{ course.crs_type }}</td>
               <td align="center">
                 <div class="btn-group btn-group-sm" role="group">
-                  <router-link type="button" class="btn btn-warning" :to="{path:`/course/edit/${course.id}`}">Editar</router-link>
-                  <router-link type="button" class="btn btn-danger" to="/course/create">Eliminar</router-link>
+                  <router-link type="button" class="btn btn-warning"
+                    :to="{ path: `/course/edit/${course.id}` }">Editar</router-link>
+                  <button type="button" class="btn btn-danger" @click="remove(course.id)">Eliminar</button>
                 </div>
               </td>
             </tr>
@@ -63,6 +64,12 @@ export default {
           this.results = data;
         }
       )
+    },
+    remove(id) {
+      const url = `http://localhost:8000/api/course/delete/${id}`;
+      axios.delete(url).then(() => {
+        this.coursesList();
+      });
     }
   }
 }
@@ -74,9 +81,18 @@ export default {
   justify-content: space-between;
   align-items: center;
 }
+
 thead {
   font-size: 10pt;
 }
+
+.description {
+  max-width: 350px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 .first-letter-uppercase::first-letter {
   text-transform: uppercase;
 }

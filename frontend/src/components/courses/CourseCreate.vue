@@ -18,7 +18,7 @@
               <div class="col">
                 <label for="description" class="form-label">Description:</label>
                 <textarea class="form-control" placeholder="Description" id="description" rows="6"
-                  v-model="course.crs_description" style="resize: none;"/>
+                  v-model="course.crs_description" style="resize: none;" maxlength="250"/>
               </div>
             </div>
             <div class="form-group row mb-3 g-2">
